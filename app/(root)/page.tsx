@@ -4,6 +4,8 @@ import {FeaturesSection} from './_components/features';
 import {ServicesSection} from './_components/services';
 import {TestimonialSection} from './_components/testimonials';
 import {TeamSection} from './_components/team';
+import {CommunitySection} from './_components/community';
+import {FAQSection} from './_components/faqs';
 
 const Page = () => {
   return (
@@ -14,6 +16,8 @@ const Page = () => {
       <ServicesSection />
       <TestimonialSection />
       <TeamSection />
+      <CommunitySection />
+      <FAQSection />
     </div>
   )
 }
