@@ -1,33 +1,40 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { loginSchema, LoginValues } from "./form-schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { sleep } from "@/utils"
 import { toast } from "sonner"
+import { setCookie } from "cookies-next"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
+import { useLoginMutation } from "@/services/auth/mutations"
 
 export function LoginForm() {
     const router = useRouter()
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const { mutateAsync, isPending, error } = useLoginMutation()
 
     const form = useForm<LoginValues>({
         resolver: zodResolver(loginSchema),
     })
 
     async function onSubmit(data: LoginValues) {
-        setIsLoading(true)
-        console.log(data)
         try {
-            await sleep(2000)
+            const response = await mutateAsync(data)
+            console.log(response)
+            const token = response.data.token
+            if (!token) {
+                toast.error("Error occured in login")
+                return
+            }
+            console.log(token)
+            setCookie('token', token);
             toast.success("Login Successful")
             router.replace("/dashboard")
-        } finally {
-            setIsLoading(false)
+        } catch (error_) {
+            toast.success(error?.message || "Error in login")
+            console.log(error_)
         }
     }
 
@@ -47,7 +54,7 @@ export function LoginForm() {
                                         {...field}
                                         type="email"
                                         placeholder="name@example.com"
-                                        disabled={isLoading}
+                                        disabled={isPending}
                                         autoComplete="email"
                                     />
                                 </FormControl>
@@ -65,7 +72,7 @@ export function LoginForm() {
                                     <Input
                                         {...field}
                                         type="password"
-                                        disabled={isLoading}
+                                        disabled={isPending}
                                         autoComplete="current-password"
                                     />
                                 </FormControl>
@@ -73,8 +80,8 @@ export function LoginForm() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="w-full" disabled={isLoading}>
-                        {isLoading && (
+                    <Button type="submit" className="w-full" disabled={isPending}>
+                        {isPending && (
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         )}
                         Sign in

@@ -40,7 +40,7 @@ export default function ParentLayout({
           <TanstackQueryProvider>
             <TooltipProvider>
               {children}
-              <Toaster />
+              <Toaster richColors />
             </TooltipProvider>
           </TanstackQueryProvider>
         </ThemeProvider>
