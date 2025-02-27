@@ -11,21 +11,20 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useRouter } from "next/navigation";
+import { useLogoutMutation } from "@/services/auth/mutations";
+import { useCurrentUser } from "@/services/auth/queries";
 
-export function UserProfileDropdown({ data }: { data?: unknown }) {
-    const router = useRouter();
-    const handleLogout = async () => {
-        router.push("/");
-    };
+export function UserProfileDropdown() {
+    const { data } = useCurrentUser()
+    const logout = useLogoutMutation()
 
     return (
         <DropdownMenu>
-            <DropdownMenuTrigger asChild onClick={() => console.log(data)}>
+            <DropdownMenuTrigger asChild>
                 <div className="hover:cursor-pointer">
                     <div className="gap-2 hidden md:flex md:justify-center md:items-center">
-                        <Avatar className="h-9 w-9 rounded-md text-sm"> 
-                            <AvatarFallback className="rounded-md">JD</AvatarFallback>
+                        <Avatar className="h-9 w-9 rounded-md text-sm">
+                            <AvatarFallback className="rounded-md">{data?.data.user.firstName[0].toUpperCase()}</AvatarFallback>
                         </Avatar>
                     </div>
                     <Button variant="outline" className="md:hidden flex items-center">
@@ -38,7 +37,7 @@ export function UserProfileDropdown({ data }: { data?: unknown }) {
                     <div className="flex flex-col space-y-2">
                         <p className="text-sm font-medium leading-none">My Account</p>
                         <p className="text-xs leading-none text-muted-foreground">
-                            john@example.com
+                            {data?.data.user.email}
                         </p>
                     </div>
                 </DropdownMenuLabel>
@@ -46,7 +45,7 @@ export function UserProfileDropdown({ data }: { data?: unknown }) {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem
-                    onClick={handleLogout}
+                    onClick={logout}
                     className="focus:bg-destructive focus:text-destructive-foreground"
                 >
                     <LogOut className="mr-2 h-4 w-4" />

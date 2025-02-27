@@ -1,6 +1,11 @@
 import Axios, { AxiosRequestConfig } from "axios";
+import { getCookie } from "cookies-next";
 
 function authRequestInterceptor(config: AxiosRequestConfig) {
+    const token = getCookie("token");
+    if (token && config.headers) {
+        config.headers.authorization = `Bearer ${token}`;
+    }
     if (config.headers) config.headers.Accept = "application/json";
     return config;
 }

@@ -9,9 +9,14 @@ export const registerUser = async (data: {
 }) => {
   return (await api.post("/auth/register", data)).data;
 };
+
 export const login = async (data: {
   email: string;
   password: string;
-}): Promise<{message: string, status: string, data: {user: User, token: string} }> => {
+}): Promise<{ message: string, status: string, data: { user: User, token: string } }> => {
   return (await api.post(`/auth/login`, data)).data;
 };
+
+export const getUser = async (): Promise<{ message: string, status: string, data: { user: User } }> => {
+  return (await api.get(`/auth/me`)).data;
+}

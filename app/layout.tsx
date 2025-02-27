@@ -38,7 +38,7 @@ export default function ParentLayout({
           disableTransitionOnChange
         >
           <TanstackQueryProvider>
-            <TooltipProvider>
+            <TooltipProvider delayDuration={0}>
               {children}
               <Toaster richColors />
             </TooltipProvider>
