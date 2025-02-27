@@ -16,7 +16,7 @@ export function Logo({ href = "/", isLogoOnly, classes }: Props) {
         <Link href={href} className={cn("flex-shrink-0 flex gap-2 items-center")}>
             {!isLogoOnly && (
                 <span className={cn("text-sm italic font-bold text-foreground", classes?.text)}>
-                    Place<span className="bg-primary underline">mentor</span> AI
+                    🤖 <span className="underline">Placementor AI</span>
                 </span>
             )}
         </Link>

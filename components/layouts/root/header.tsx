@@ -10,7 +10,7 @@ export default function Header() {
         <nav className="shadow-md sticky top-0 left-0 right-0 bg-background border-b w-full z-10">
             <div className="container mx-auto px-4 sm:px-6 lg:px-4">
                 <div className="flex justify-between h-16">
-                    <Logo isLogoOnly />
+                    <Logo />
 
                     <div className="ml-6 flex items-center">
                         <Link
