@@ -1,19 +1,7 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Star } from "lucide-react";
 
 interface ReviewProps {
@@ -27,52 +15,43 @@ interface ReviewProps {
 const reviewList: ReviewProps[] = [
   {
     image: "https://github.com/shadcn.png",
-    name: "John Doe",
-    userName: "Product Manager",
+    name: "Rahul Sharma",
+    userName: "Software Engineer at Google",
     comment:
-      "Wow NextJs + Shadcn is awesome!. This template lets me change colors, fonts and images to match my brand identity. ",
+      "This platform was a game-changer for me! The structured roadmap and mock interviews helped me crack my dream job at Google.",
     rating: 5.0,
   },
   {
     image: "https://github.com/shadcn.png",
-    name: "Sophia Collins",
-    userName: "Cybersecurity Analyst",
+    name: "Priya Verma",
+    userName: "Data Analyst at Amazon",
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
+      "I loved the interactive challenges and AI-powered mock interviews. They boosted my confidence and prepared me for real-world scenarios.",
+    rating: 4.9,
+  },
+  {
+    image: "https://github.com/shadcn.png",
+    name: "Amit Patel",
+    userName: "Full Stack Developer at Microsoft",
+    comment:
+      "The personalized learning plan kept me on track, and the daily tasks made learning fun and consistent. Highly recommend!",
+    rating: 5.0,
+  },
+  {
+    image: "https://github.com/shadcn.png",
+    name: "Sneha Gupta",
+    userName: "Cybersecurity Engineer at Cisco",
+    comment:
+      "The platform’s curated content saved me so much time. The interview preparation section was particularly helpful!",
     rating: 4.8,
   },
-
   {
     image: "https://github.com/shadcn.png",
-    name: "Adam Johnson",
-    userName: "Chief Technology Officer",
+    name: "Karan Mehta",
+    userName: "Backend Developer at Flipkart",
     comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    rating: 4.9,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Ethan Parker",
-    userName: "Data Scientist",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
+      "The gamification features kept me engaged, and the peer support system was amazing. This platform made my placement journey smoother!",
     rating: 5.0,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Ava Mitchell",
-    userName: "IT Project Manager",
-    comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
-    rating: 5.0,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Isabella Reed",
-    userName: "DevOps Engineer",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    rating: 4.9,
   },
 ];
 
@@ -83,32 +62,24 @@ export const TestimonialSection = () => {
         <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
           Testimonials
         </h2>
-
         <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-          Hear What Our 1000+ Clients Say
+          Hear From Students Who Cracked Their Dream Jobs
         </h2>
       </div>
 
       <Carousel
-        opts={{
-          align: "start",
-        }}
+        opts={{ align: "start" }}
         className="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
       >
         <CarouselContent>
           {reviewList.map((review) => (
-            <CarouselItem
-              key={review.name}
-              className="md:basis-1/2 lg:basis-1/3"
-            >
+            <CarouselItem key={review.name} className="md:basis-1/2 lg:basis-1/3">
               <Card className="bg-muted/50 dark:bg-card">
                 <CardContent className="pt-6 pb-0">
                   <div className="flex gap-1 pb-6">
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
-                    <Star className="size-4 fill-primary text-primary" />
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="size-4 fill-primary text-primary" />
+                    ))}
                   </div>
                   {`"${review.comment}"`}
                 </CardContent>
@@ -116,11 +87,8 @@ export const TestimonialSection = () => {
                 <CardHeader>
                   <div className="flex flex-row items-center gap-4">
                     <Avatar>
-                      <AvatarImage
-                        src="https://avatars.githubusercontent.com/u/75042455?v=4"
-                        alt="radix"
-                      />
-                      <AvatarFallback>SV</AvatarFallback>
+                      <AvatarImage src={review.image} alt={review.name} />
+                      <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
                     </Avatar>
 
                     <div className="flex flex-col">

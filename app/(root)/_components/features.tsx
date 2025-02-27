@@ -1,49 +1,50 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Icon } from "@/components/ui/icon";
-import { icons } from "lucide-react";
+import { 
+  GraduationCap, Trophy, Mic, BarChart, Users, Youtube 
+} from "lucide-react"; // ✅ Import icons directly
 
 interface FeaturesProps {
-  icon: string;
+  icon: React.ReactNode; // ✅ Change icon type to JSX.Element
   title: string;
   description: string;
 }
 
 const featureList: FeaturesProps[] = [
   {
-    icon: "TabletSmartphone",
-    title: "Mobile Friendly",
+    icon: <GraduationCap size={24} className="text-primary" />,
+    title: "Daily Structured Learning",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
+      "Follow a daily learning plan covering DSA, system design, and aptitude, ensuring consistent progress.",
   },
   {
-    icon: "BadgeCheck",
-    title: "Social Proof",
+    icon: <Trophy size={24} className="text-primary" />,
+    title: "Gamification & Rewards",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+      "Stay motivated with leaderboard rankings, achievement badges, and rewards for completing challenges.",
   },
   {
-    icon: "Goal",
-    title: "Targeted Content",
+    icon: <Mic size={24} className="text-primary" />,
+    title: "AI-Powered Mock Interviews",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+      "Experience real-world interview simulations with instant AI feedback and confidence analysis.",
   },
   {
-    icon: "PictureInPicture",
-    title: "Strong Visuals",
+    icon: <BarChart size={24} className="text-primary" />,
+    title: "Real-Time Progress Tracking",
     description:
-      "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+      "Monitor your performance, analyze strengths and weaknesses, and track daily learning streaks.",
   },
   {
-    icon: "MousePointerClick",
-    title: "Clear CTA",
+    icon: <Users size={24} className="text-primary" />,
+    title: "Community & Peer Support",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+      "Join a community of learners, discuss problems, and get mentorship from industry professionals.",
   },
   {
-    icon: "Newspaper",
-    title: "Clear Headline",
+    icon: <Youtube size={24} className="text-primary" />,
+    title: "Curated Learning Resources",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+      "Access the best YouTube videos, blogs, and coding problems handpicked for placement preparation.",
   },
 ];
 
@@ -59,9 +60,8 @@ export const FeaturesSection = () => {
       </h2>
 
       <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground mb-8">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem
-        fugiat, odit similique quasi sint reiciendis quidem iure veritatis optio
-        facere tenetur.
+        Prepare for placements with a structured approach, AI-driven guidance,
+        and a supportive community.
       </h3>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -70,12 +70,7 @@ export const FeaturesSection = () => {
             <Card className="h-full bg-background border-0 shadow-none">
               <CardHeader className="flex justify-center items-center">
                 <div className="bg-primary/20 p-2 rounded-full ring-8 ring-primary/10 mb-4">
-                  <Icon
-                    name={icon as keyof typeof icons}
-                    size={24}
-                    color="hsl(var(--primary))"
-                    className="text-primary"
-                  />
+                  {icon} {/* ✅ Icons now render correctly */}
                 </div>
 
                 <CardTitle>{title}</CardTitle>
