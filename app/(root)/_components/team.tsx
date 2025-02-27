@@ -24,31 +24,31 @@ interface SocialNetworkProps {
 export const TeamSection = () => {
   const teamList: TeamProps[] = [
     {
-      imageUrl: "/assets/images/av1.jpg",
-      firstName: "Leo",
-      lastName: "Miranda",
-      positions: ["Vue Fronted Developer", "Creator Of This Website"],
+      imageUrl: "/assets/images/team1.jpg",
+      firstName: "Tamanna",
+      lastName: "Sharma",
+      positions: ["Fronted Developer", "Backend Designer", "Developer"],
       socialNetworks: [
         {
           name: "LinkedIn",
-          url: "https://www.linkedin.com/in/leopoldo-miranda/",
+          url: "https://www.linkedin.com/in/",
         },
         {
           name: "Github",
-          url: "https://github.com/leoMirandaa",
+          url: "https://github.com/tamannasgh",
         },
         {
           name: "X",
-          url: "https://x.com/leo_mirand4",
+          url: "https://x.com/tamannastwt",
         },
       ],
     },
     {
       imageUrl:
-       "/assets/images/av1.jpg",
-      firstName: "Elizabeth",
-      lastName: "Moore",
-      positions: ["UI/UX Designer"],
+       "/assets/images/team2.jpg",
+      firstName: "Anurag",
+      lastName: "Kochar",
+      positions: ["UI/UX Designer", "Full Stack Developer"],
       socialNetworks: [
         {
           name: "LinkedIn",
@@ -62,9 +62,9 @@ export const TeamSection = () => {
     },
     {
       imageUrl:
-        "/assets/images/av1.jpg",
-      firstName: "David",
-      lastName: "Diaz",
+        "/assets/images/team3.jpg",
+      firstName: "Parth",
+      lastName: "Mandawaria",
       positions: ["Machine Learning Engineer", "TensorFlow Tinkerer"],
       socialNetworks: [
         {
@@ -78,9 +78,9 @@ export const TeamSection = () => {
       ],
     },
     {
-      imageUrl: "/assets/images/av1.jpg",
-      firstName: "Sarah",
-      lastName: "Robinson",
+      imageUrl: "/assets/images/team4.jpg",
+      firstName: "Siddarth",
+      lastName: "Rajpurohit",
       positions: ["Cloud Native Developer", " Kubernetes Orchestrator"],
       socialNetworks: [
         {
@@ -99,9 +99,9 @@ export const TeamSection = () => {
     },
     {
       imageUrl:
-        "/assets/images/av1.jpg",
-      firstName: "Michael",
-      lastName: "Holland",
+        "/assets/images/team5.jpg",
+      firstName: "Tanmay",
+      lastName: "Jain",
       positions: ["DevOps Engineer", "CI/CD Pipeline Mastermind"],
       socialNetworks: [
         {
@@ -134,7 +134,7 @@ export const TeamSection = () => {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
         {teamList.map(
           (
             { imageUrl, firstName, lastName, positions, socialNetworks },
