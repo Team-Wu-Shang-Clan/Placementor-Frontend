@@ -16,7 +16,7 @@ const IS_ADMIN = false;
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/my-plans", icon: UsersRound, label: "My plans" },
+  { href: "/my-plan", icon: UsersRound, label: "My plan" },
 ];
 
 

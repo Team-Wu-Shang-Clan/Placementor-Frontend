@@ -14,7 +14,7 @@ export default function Header() {
 
                     <div className="ml-6 flex items-center">
                         <Link
-                            href={"/auth/login"}
+                            href={"/login"}
                             className={buttonVariants({
                                 variant: "secondary",
                                 className: "ml-4 flex items-center",
@@ -24,7 +24,7 @@ export default function Header() {
                             Login
                         </Link>
                         <Link
-                            href={"/auth/signup"}
+                            href={"/register    "}
                             className={buttonVariants({
                                 className: "ml-4 hidden sm:block",
                             })}
