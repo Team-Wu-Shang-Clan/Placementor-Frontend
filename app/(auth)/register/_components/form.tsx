@@ -1,6 +1,5 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Loader2 } from "lucide-react"
 import { registerSchema, RegisterValues } from "./form-schema"
@@ -8,26 +7,32 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { sleep } from "@/utils"
 import { toast } from "sonner"
+import { useRegisterMutation } from "@/services/auth/mutations"
 
 
 export function RegisterForm() {
+    const { mutateAsync, isPending, error } = useRegisterMutation()
     const router = useRouter()
-    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const form = useForm<RegisterValues>({
         resolver: zodResolver(registerSchema),
     })
 
     async function onSubmit(data: RegisterValues) {
-        console.log(data)
-        setIsLoading(true)
-        await sleep(2000)
-        setIsLoading(false)
-        toast.success("Registered successfully")
-        router.replace("/login")
-
+        try {
+            await mutateAsync({
+                email: data.email,
+                password: data.password,
+                firstName: data.firstName,
+                lastName: data.lastName
+            })
+            toast.success("Registered successfully")
+            router.replace("/login")
+        } catch (error_) {
+            console.log(error_)
+            toast.success(error?.message || "Error in registering")
+        }
     }
 
 
@@ -43,7 +48,7 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>First Name</FormLabel>
                                     <FormControl>
-                                        <Input {...field} disabled={isLoading} placeholder="type here..." />
+                                        <Input {...field} disabled={isPending} placeholder="type here..." />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -56,7 +61,7 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>Last Name</FormLabel>
                                     <FormControl>
-                                        <Input {...field} disabled={isLoading} placeholder="type here..." />
+                                        <Input {...field} disabled={isPending} placeholder="type here..." />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -71,7 +76,7 @@ export function RegisterForm() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input {...field} type="email" disabled={isLoading} placeholder="type here..." />
+                                    <Input {...field} type="email" disabled={isPending} placeholder="type here..." />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -87,7 +92,7 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>Password</FormLabel>
                                     <FormControl>
-                                        <Input {...field} type="password" disabled={isLoading} placeholder="type here..." />
+                                        <Input {...field} type="password" disabled={isPending} placeholder="type here..." />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -100,15 +105,15 @@ export function RegisterForm() {
                                 <FormItem>
                                     <FormLabel>Confirm Password</FormLabel>
                                     <FormControl>
-                                        <Input {...field} type="password" disabled={isLoading} placeholder="type here..." />
+                                        <Input {...field} type="password" disabled={isPending} placeholder="type here..." />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     </div>
-                    <Button type="submit" className="w-full" disabled={isLoading}>
-                        {isLoading && (
+                    <Button type="submit" className="w-full" disabled={isPending}>
+                        {isPending && (
                             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         )}
                         Sign up
