@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme";
 import { TanstackQueryProvider } from "@/providers/tanstack-query";
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TanstackQueryProvider>
-            {children}
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
           </TanstackQueryProvider>
         </ThemeProvider>
       </body>
