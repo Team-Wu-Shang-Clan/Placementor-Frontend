@@ -1,9 +1,10 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { ThemeProvider } from "@/providers/theme";
 import { TanstackQueryProvider } from "@/providers/tanstack-query";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
           <TanstackQueryProvider>
             <TooltipProvider>
               {children}
+              <Toaster />
             </TooltipProvider>
           </TanstackQueryProvider>
         </ThemeProvider>
