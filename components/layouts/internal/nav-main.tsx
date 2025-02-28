@@ -1,6 +1,6 @@
 "use client";
 
-import { UsersRound, LayoutDashboard } from "lucide-react";
+import { UsersRound, LayoutDashboard, Plus } from "lucide-react";
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -16,7 +16,8 @@ const IS_ADMIN = false;
 
 const navItems = [
   { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { href: "/my-plan", icon: UsersRound, label: "My plan" },
+  { href: "/my-plans", icon: UsersRound, label: "My plan" },
+  { href: "/my-plans/create", icon: Plus, label: "Create Plan" },
 ];
 
 
