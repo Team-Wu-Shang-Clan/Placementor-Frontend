@@ -74,6 +74,7 @@ export function LoginForm() {
                                         type="password"
                                         disabled={isPending}
                                         autoComplete="current-password"
+                                        placeholder="••••••••"
                                     />
                                 </FormControl>
                                 <FormMessage />
