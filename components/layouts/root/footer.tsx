@@ -23,34 +23,34 @@ export const Footer = () => {
                     <div className="col-span-1 md:col-span-2 lg:col-span-1 space-y-4">
                         <Logo isLogoOnly />
                         <p className="text-muted-foreground text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At non aliquam, maiores expedita rerum accusantium eum reprehenderit nostrum aspernatur et?
+                            Empowering students with structured learning and AI-powered mock interviews to excel in placements.
                         </p>
                     </div>
-
+    
                     {/* Quick Links */}
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
                         <ul className="space-y-2">
                             <li>
                                 <Link
-                                    href="/projects"
+                                    href="#"
                                     className={buttonVariants({
                                         variant: "link",
                                         className: "text-muted-foreground hover:text-primary !p-0",
                                     })}
                                 >
-                                    Lorem, ipsum.
+                                    Learning Plans
                                 </Link>
                             </li>
                             <li>
                                 <Link
-                                    href="/#featured-projects"
+                                    href="#"
                                     className={buttonVariants({
                                         variant: "link",
                                         className: "text-muted-foreground hover:text-primary !p-0",
                                     })}
                                 >
-                                    Lorem, ipsum.
+                                    AI Mock Interviews
                                 </Link>
                             </li>
                             <li>
@@ -58,7 +58,7 @@ export const Footer = () => {
                                     variant="link"
                                     className="p-0 text-muted-foreground hover:text-primary"
                                 >
-                                    Lorem, ipsum.
+                                    Progress Tracking
                                 </Button>
                             </li>
                             <li>
@@ -66,19 +66,19 @@ export const Footer = () => {
                                     variant="link"
                                     className="p-0 text-muted-foreground hover:text-primary text-left"
                                 >
-                                    Lorem, ipsum.
+                                    Community Support
                                 </Button>
                             </li>
                         </ul>
                     </div>
-
+    
                     {/* Legal Links */}
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Legal</h3>
                         <ul className="space-y-2">
                             <li>
                                 <Link
-                                    href="/privacy-policy"
+                                    href="#"
                                     className={buttonVariants({
                                         className: "text-sm text-muted-foreground hover:text-primary !p-0",
                                         variant: "link",
@@ -89,7 +89,7 @@ export const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/terms-of-service"
+                                    href="#"
                                     className={buttonVariants({
                                         className: "text-sm text-muted-foreground hover:text-primary !p-0",
                                         variant: "link",
@@ -100,7 +100,7 @@ export const Footer = () => {
                             </li>
                             <li>
                                 <Link
-                                    href="/cookie-policy"
+                                    href="#"
                                     className={buttonVariants({
                                         className: "text-sm text-muted-foreground hover:text-primary !p-0",
                                         variant: "link",
@@ -111,43 +111,39 @@ export const Footer = () => {
                             </li>
                         </ul>
                     </div>
-
+    
                     {/* Social Links */}
                     <div>
                         <h3 className="font-semibold text-lg mb-4">Connect</h3>
                         <div className="flex space-x-4">
-                            <Button variant="outline" size="icon" className="rounded-full bg-blue-500 hover:bg-blue-600" asChild>
-                                <a
-                                    href="https://twitter.com/example"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Follow us on Twitter"
-                                >
+                            <Link
+                                href="#"
+                                aria-label="Follow us on Twitter"
+                            >
+                                <Button variant="outline" size="icon" className="rounded-full bg-blue-500 hover:bg-blue-600">
                                     <TwitterIcon className="h-4 w-4" color="white" />
-                                </a>
-                            </Button>
-                            <Button variant="outline" size="icon" className="rounded-full bg-orange-500 hover:bg-orange-600" asChild>
-                                <a
-                                    href="https://github.com/exmaple"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label="Visit our GitHub repository"
-                                >
+                                </Button>
+                            </Link>
+                            <Link
+                                href="#"
+                                aria-label="Visit our GitHub repository"
+                            >
+                                <Button variant="outline" size="icon" className="rounded-full bg-orange-500 hover:bg-orange-600">
                                     <GithubIcon className="h-4 w-4" color="white" />
-                                </a>
-                            </Button>
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
-
+    
                 {/* Copyright */}
                 <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                     <p className="text-sm text-center text-muted-foreground">
-                        © {currentYear} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, aliquid?
+                        © {currentYear} Placement Prep Hub. All rights reserved.
                     </p>
                 </div>
             </div>
         </footer>
     )
+    
 }
-
